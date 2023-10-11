@@ -10,6 +10,21 @@
     "astro": "astro"
   },
   "dependencies": {
-    "astro": "^3.2.2"
+    "@astrojs/react": "^3.0.3",
+    "@astrojs/tailwind": "^5.0.1",
+    "@mantine/core": "^7.1.2",
+    "@mantine/dates": "^7.1.2",
+    "@mantine/form": "^7.1.2",
+    "@mantine/hooks": "^7.1.2",
+    "@mantine/modals": "^7.1.2",
+    "@mantine/notifications": "^7.1.2",
+    "@types/react": "^18.0.21",
+    "@types/react-dom": "^18.0.6",
+    "astro": "^3.2.2",
+    "dayjs": "^1.11.10",
+    "react": "^18.0.0",
+    "react-dom": "^18.0.0",
+    "surrealdb.js": "^0.9.1",
+    "tailwindcss": "^3.0.24"
   }
 }

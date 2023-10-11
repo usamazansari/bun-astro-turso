@@ -1,0 +1,9 @@
+version: "3"
+services:
+  surrealdb:
+    image: surrealdb/surrealdb:latest
+    command: start --auth --user root --pass root file:/data/database.db
+    ports:
+      - "8000:8000"
+    volumes:
+      - /home/usama/Workspaces/docker/surrealdb:/data
