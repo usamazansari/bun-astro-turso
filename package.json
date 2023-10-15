@@ -6,6 +6,7 @@
     "dev": "astro dev",
     "start": "astro dev",
     "build": "astro build",
+    "purgecss": "purgecss --config ./src/config/purgecss/purgecss.config.ts",
     "preview": "astro preview",
     "astro": "astro"
   },
@@ -18,13 +19,16 @@
     "@mantine/hooks": "^7.1.2",
     "@mantine/modals": "^7.1.2",
     "@mantine/notifications": "^7.1.2",
-    "@types/react": "^18.0.21",
-    "@types/react-dom": "^18.0.6",
     "astro": "^3.2.2",
     "dayjs": "^1.11.10",
+    "eslint": "^8.51.0",
     "react": "^18.0.0",
     "react-dom": "^18.0.0",
-    "surrealdb.js": "^0.9.1",
     "tailwindcss": "^3.0.24"
+  },
+  "devDependencies": {
+    "@fullhuman/postcss-purgecss": "^5.0.0",
+    "@types/react": "^18.0.21",
+    "@types/react-dom": "^18.0.6"
   }
 }
