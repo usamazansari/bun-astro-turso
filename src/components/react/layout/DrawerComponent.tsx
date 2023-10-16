@@ -46,6 +46,7 @@ export function DrawerComponent({ opened, close }: { opened: boolean; close: () 
               {menuItems.map(({ href, icon, label }) => (
                 <NavLink variant="subtle" key={label} label={label} leftSection={<span className="material-icons">{icon}</span>} href={href} />
               ))}
+              <NavLink variant="subtle" label="Blog" leftSection={<span className="material-icons">article</span>} href="/posts/post-1" />
             </Box>
           </Box>
         </Drawer.Body>
