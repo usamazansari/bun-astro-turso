@@ -15,7 +15,8 @@
     "linebreak-style": ["error", "windows"],
     "quotes": ["error", "single"],
     "semi": ["error", "always"],
-    "react/react-in-jsx-scope": ["off"]
+    "react/react-in-jsx-scope": ["off"],
+    "@typescript-eslint/no-unused-vars": ["warn"]
   }
 }
 
