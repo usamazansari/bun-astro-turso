@@ -1,17 +1,6 @@
-import { Box, Divider, Drawer, Flex, ScrollArea, Text, UnstyledButton, useMantineTheme } from '@mantine/core';
+import { Avatar, Box, Divider, Drawer, NavLink, ScrollArea, Text, useMantineTheme } from '@mantine/core';
 import { useViewportSize } from '@mantine/hooks';
 import { useMemo } from 'react';
-
-function NavigationButton({ href, icon, label }: { href: string | undefined; icon: string; label: string }) {
-  return (
-    <UnstyledButton component="a" variant="transparent" href={href} p="sm">
-      <Text size="lg" className="flex gap-1 items-center">
-        <span className="material-icons text-color-accent-emphasis">{icon}</span>
-        <span className="">{label}</span>
-      </Text>
-    </UnstyledButton>
-  );
-}
 
 export function DrawerComponent({ opened, close }: { opened: boolean; close: () => void }) {
   const theme = useMantineTheme();
@@ -27,8 +16,8 @@ export function DrawerComponent({ opened, close }: { opened: boolean; close: () 
       { icon: 'home', label: 'Home', href: '/' },
       { icon: 'dashboard', label: 'Dashboard', href: '/dashboard', isProtected: true },
       { icon: 'account_balance_wallet', label: 'Pocketbooks', href: '/pocketbooks', isProtected: true },
-      { icon: 'account_circle', label: 'Profile', href: '/profile', isProtected: true, isBottomSection: true },
-      { icon: 'fingerprint', label: 'Auth', href: '/auth', isBottomSection: true },
+      { icon: 'account_circle', label: 'Profile', href: '/profile', isProtected: true },
+      { icon: 'fingerprint', label: 'Auth', href: '/auth' },
     ],
     [],
   );
@@ -39,30 +28,26 @@ export function DrawerComponent({ opened, close }: { opened: boolean; close: () 
       <Drawer.Content>
         <Drawer.Header>
           <Drawer.Title className="cursor-default">
-            <Text size="lg" fw="bold">
-              Navigation
-            </Text>
+            <Text>Navigation</Text>
           </Drawer.Title>
           <Drawer.CloseButton />
         </Drawer.Header>
         <Divider />
         <Drawer.Body p={0}>
-          <Flex direction="column" justify="space-between">
-            <Box className="grid gap-1">
-              {menuItems
-                .filter(({ isBottomSection }) => !isBottomSection)
-                .map(({ href, icon, label }) => (
-                  <NavigationButton key={label} href={href} icon={icon} label={label}></NavigationButton>
-                ))}
+          <Box className="grid gap-4">
+            <Box className="grid gap-2">
+              <Avatar size="100%" variant="transparent" className="max-h-96" />
+              <Text ta="center" fw={700}>
+                John Doe
+              </Text>
             </Box>
-            <Box className="grid gap-1">
-              {menuItems
-                .filter(({ isBottomSection }) => isBottomSection)
-                .map(({ href, icon, label }) => (
-                  <NavigationButton key={label} href={href} icon={icon} label={label}></NavigationButton>
-                ))}
+            <Divider />
+            <Box className="grid">
+              {menuItems.map(({ href, icon, label }) => (
+                <NavLink variant="subtle" key={label} label={label} leftSection={<span className="material-icons">{icon}</span>} href={href} />
+              ))}
             </Box>
-          </Flex>
+          </Box>
         </Drawer.Body>
       </Drawer.Content>
     </Drawer.Root>

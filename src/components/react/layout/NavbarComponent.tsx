@@ -1,4 +1,4 @@
-import { Burger, Divider, Flex, MantineProvider, Switch, useMantineColorScheme, type MantineColorScheme } from '@mantine/core';
+import { Burger, Divider, Flex, MantineProvider, Switch, useMantineColorScheme, type MantineColorScheme, Title } from '@mantine/core';
 import '@mantine/core/styles.css';
 import { useDisclosure } from '@mantine/hooks';
 import { useState } from 'react';
@@ -40,6 +40,7 @@ export function NavbarComponent() {
               title="Toggle Sidebar"
               style={{ alignSelf: 'center' }}
             />
+            <Title order={4}>Expenses Tracker</Title>
           </Flex>
           <Flex>
             <DarkModeSwitch setColorScheme={setColorScheme} />

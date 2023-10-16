@@ -6,16 +6,11 @@ export function FooterComponent() {
     <MantineProvider>
       <footer>
         <Divider />
-        <Flex gap="md" px="md" style={{ minHeight: '60px' }}>
-          <Flex justify="space-between" className="w-full">
-            <Text className="self-center">Expenses Tracker</Text>
-            <Text className="self-center">
-              Made by{' '}
-              <Anchor href="https://github.com/usamazansari" target="_blank" underline="hover">
-                @usamazansari
-              </Anchor>
-            </Text>
-          </Flex>
+        <Flex gap="xs" px="md" justify="flex-end" align="center" className="h-16">
+          <Text>Made by</Text>
+          <Anchor href="https://github.com/usamazansari" target="_blank" underline="hover" className="underline-offset-2">
+            @usamazansari
+          </Anchor>
         </Flex>
       </footer>
     </MantineProvider>
