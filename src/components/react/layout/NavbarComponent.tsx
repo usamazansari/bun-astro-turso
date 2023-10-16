@@ -1,4 +1,4 @@
-import { Burger, Divider, Drawer, Flex, MantineProvider, ScrollArea, Switch, useMantineColorScheme, type MantineColorScheme } from '@mantine/core';
+import { Burger, Divider, Flex, MantineProvider, Switch, useMantineColorScheme, type MantineColorScheme } from '@mantine/core';
 import '@mantine/core/styles.css';
 import { useDisclosure } from '@mantine/hooks';
 import { useState } from 'react';
@@ -25,17 +25,11 @@ export function NavbarComponent() {
   const [colorScheme, setColorScheme] = useState('auto' as MantineColorScheme);
 
   return (
-    <MantineProvider theme={{ ...theme, primaryColor: 'blue' }} defaultColorScheme={colorScheme}>
+    <MantineProvider theme={theme} defaultColorScheme={colorScheme}>
       <nav className="sticky top-0 left-0 right-0">
         <Flex gap="md" align="center" justify="space-between" px="md" style={{ minHeight: '60px' }}>
           <Flex gap="md">
-            <Drawer.Root hiddenFrom="sm" opened={opened} onClose={close} size="100%" scrollAreaComponent={ScrollArea.Autosize}>
-              <DrawerComponent />
-            </Drawer.Root>
-            <Drawer.Root opened={opened} visibleFrom="sm" onClose={close} scrollAreaComponent={ScrollArea.Autosize}>
-              <Drawer.Overlay backgroundOpacity={0.5} blur={4} />
-              <DrawerComponent />
-            </Drawer.Root>
+            <DrawerComponent opened={opened} close={close} />
             <Burger
               opened={opened}
               onClick={() => {
