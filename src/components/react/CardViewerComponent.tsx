@@ -1,31 +1,63 @@
-import { Badge, Button, Card, Group, Modal, Text, Tooltip } from '@mantine/core';
-import { useDisclosure } from '@mantine/hooks';
-import { ModalFromCard } from './ModalFromCard';
+import { Button, Card, Flex, Group, MantineProvider, Text, Title } from '@mantine/core';
+import { useCallback, useState } from 'react';
+import { theme } from '../../config/mantine/mantine.theme';
+import { useTursoClient } from '../../hooks';
 
-export function CardViewerComponent() {
-  const [opened, { open, close }] = useDisclosure(false);
+export function CardViewerComponent({ url, authToken }: { url: string | undefined; authToken: string | undefined }) {
+  const { client } = useTursoClient({ url: url, authToken: authToken });
+
+  const [users, setUsers] = useState<Record<string, unknown>>();
+  const [scores, setScores] = useState<Record<string, unknown>>();
+
+  const fetchFromDB = useCallback(() => {
+    const fetchData = async () => {
+      try {
+        if (client) {
+          const { columns: usersColumns, rows: usersRows } = await client.execute('SELECT * FROM example_users');
+          setUsers({ usersColumns, usersRows });
+          const { columns: scoresColumns, rows: scoresRows } = await client.execute({
+            // sql: 'select * from example_scores where uid = ? and level = ?',
+            // args: ['uid1', 2],
+            sql: 'select * from example_scores',
+            args: [],
+          });
+          setScores({ scoresColumns, scoresRows });
+        }
+      } catch (e) {
+        console.error({ e });
+      }
+    };
+    fetchData();
+  }, [client]);
+
   return (
-    <Card shadow="sm" padding="lg" radius="md" withBorder>
-      <Group justify="space-between" mt="md" mb="xs">
-        <Text fw={500}>Norway Fjord Adventures</Text>
-        <Badge color="pink" variant="light">
-          On Sale
-        </Badge>
-      </Group>
+    <MantineProvider theme={theme} defaultColorScheme="dark">
+      <Card shadow="sm" padding="lg" radius="md" withBorder>
+        <Group justify="space-between" mt="md" mb="xs">
+          <Text size="sm">Click on the button to fetch data from the database</Text>
+        </Group>
 
-      <Text size="sm" c="dimmed">
-        With Fjord Tours you can explore more of the magical fjord landscapes with tours and activities on and around the fjords of Norway.
-      </Text>
-
-      <Modal opened={opened} onClose={close} title="Book">
-        <ModalFromCard />
-      </Modal>
-
-      <Tooltip label="Book now!" withArrow>
-        <Button variant="light" color="blue" fullWidth mt="md" radius="md" onClick={open}>
-          Book classic tour now
+        <Button
+          variant="light"
+          color="blue"
+          fullWidth
+          mt="md"
+          radius="md"
+          onClick={() => {
+            fetchFromDB();
+          }}>
+          Fetch data
         </Button>
-      </Tooltip>
-    </Card>
+
+        <Flex direction={'column'}>
+          <Title>Users</Title>
+          {users ? <Text>{JSON.stringify(users)}</Text> : <Text>Unable to load users</Text>}
+        </Flex>
+        <Flex direction={'column'}>
+          <Title>Scores</Title>
+          {scores ? <Text>{JSON.stringify(scores)}</Text> : <Text>Unable to load scores</Text>}
+        </Flex>
+      </Card>
+    </MantineProvider>
   );
 }

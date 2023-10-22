@@ -4,15 +4,16 @@
   "version": "0.0.1",
   "scripts": {
     "dev": "astro dev",
-    "start": "astro dev",
-    "build": "astro build",
+    "start": "bunx --bun astro dev",
+    "build": "bunx --bun astro build",
     "purgecss": "purgecss --config ./src/config/purgecss/purgecss.config.ts",
-    "preview": "astro preview",
-    "astro": "astro"
+    "preview": "bunx --bun astro preview",
+    "astro": "bunx --bun astro"
   },
   "dependencies": {
     "@astrojs/react": "^3.0.3",
     "@astrojs/tailwind": "^5.0.1",
+    "@libsql/client": "^0.3.6",
     "@mantine/core": "^7.1.2",
     "@mantine/dates": "^7.1.2",
     "@mantine/form": "^7.1.2",
@@ -31,7 +32,7 @@
     "@types/react": "^18.0.21",
     "@types/react-dom": "^18.0.6",
     "@typescript-eslint/eslint-plugin": "^6.4.0",
-    "bun-types": "latest",
+    "bun-types": "^1.0.7",
     "eslint-config-standard-with-typescript": "^39.1.1",
     "eslint-plugin-import": "^2.25.2",
     "eslint-plugin-n": "^15.0.0 || ^16.0.0 ",
@@ -45,3 +46,4 @@
     "typescript": "^5.0.0"
   }
 }
+

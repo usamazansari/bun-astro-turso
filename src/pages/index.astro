@@ -1,7 +1,13 @@
 ---
 import Layout from '../components/astro/Layout.astro';
+import { CardViewerComponent } from '../components/react/CardViewerComponent';
+
+export const dbUrl = Bun.env.TURSO_DB_EXPENSES_TRACKER_ASTRO_DB_URL;
+export const authToken = Bun.env.TURSO_DB_AUTH_TOKEN;
 ---
 
-<Layout shouldShowSidebarToggle>
-  <main></main>
+<Layout>
+  <main>
+    <CardViewerComponent client:load url={dbUrl} authToken={authToken} />
+  </main>
 </Layout>
