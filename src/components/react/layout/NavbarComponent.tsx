@@ -26,7 +26,7 @@ export function NavbarComponent() {
 
   return (
     <MantineProvider theme={theme} defaultColorScheme={colorScheme}>
-      <nav className="sticky top-0 left-0 right-0">
+      <nav className="sticky top-0 left-0 right-0 bg-[#ffffff] dark:bg-color-header-bg">
         <Flex gap="md" align="center" justify="space-between" px="md" style={{ minHeight: '60px' }}>
           <Flex gap="md">
             <DrawerComponent opened={opened} close={close} />

@@ -1,9 +1,10 @@
-import { Avatar, Box, Divider, Drawer, NavLink, ScrollArea, Text, useMantineTheme } from '@mantine/core';
+import { Avatar, Box, Divider, Drawer, NavLink, ScrollArea, Text, useMantineColorScheme, useMantineTheme } from '@mantine/core';
 import { useViewportSize } from '@mantine/hooks';
 import { useMemo } from 'react';
 
 export function DrawerComponent({ opened, close }: { opened: boolean; close: () => void }) {
   const theme = useMantineTheme();
+  const colorScheme = useMantineColorScheme();
   const { width } = useViewportSize();
   const breakpoint = useMemo(() => {
     const number = theme.breakpoints.md.match(/\d+/);
@@ -23,7 +24,16 @@ export function DrawerComponent({ opened, close }: { opened: boolean; close: () 
   );
 
   return (
-    <Drawer.Root opened={opened} onClose={close} size={isNarrowViewport ? '100%' : 'md'} scrollAreaComponent={ScrollArea.Autosize}>
+    <Drawer.Root
+      opened={opened}
+      onClose={close}
+      size={isNarrowViewport ? '100%' : 'md'}
+      scrollAreaComponent={ScrollArea.Autosize}
+      styles={{
+        body: {
+          backgroundColor: colorScheme.colorScheme === 'dark' ? theme.colors.dark[8] : theme.colors.gray[0],
+        },
+      }}>
       <Drawer.Overlay visibleFrom="sm" backgroundOpacity={0.5} blur={4} />
       <Drawer.Content>
         <Drawer.Header>
