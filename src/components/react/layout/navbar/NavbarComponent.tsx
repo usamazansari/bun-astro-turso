@@ -2,7 +2,7 @@ import { Burger, Divider, Flex, MantineProvider, Switch, useMantineColorScheme, 
 import '@mantine/core/styles.css';
 import { useDisclosure } from '@mantine/hooks';
 import { useState } from 'react';
-import { theme } from '../../../config/mantine/mantine.theme';
+import { theme } from '../../../../config/mantine/mantine.theme';
 import { DrawerComponent } from './DrawerComponent';
 
 function DarkModeSwitch({ setColorScheme }: { setColorScheme: (scheme: MantineColorScheme) => void }) {
@@ -26,28 +26,26 @@ export function NavbarComponent() {
 
   return (
     <MantineProvider theme={theme} defaultColorScheme={colorScheme}>
-      <nav className="sticky top-0 left-0 right-0 bg-[#ffffff] dark:bg-color-header-bg">
-        <Flex gap="md" align="center" justify="space-between" px="md" style={{ minHeight: '60px' }}>
-          <Flex gap="md">
-            <DrawerComponent opened={opened} close={close} />
-            <Burger
-              opened={opened}
-              onClick={() => {
-                open();
-              }}
-              size="sm"
-              type="button"
-              title="Toggle Sidebar"
-              style={{ alignSelf: 'center' }}
-            />
-            <Title order={4}>Expenses Tracker</Title>
-          </Flex>
-          <Flex>
-            <DarkModeSwitch setColorScheme={setColorScheme} />
-          </Flex>
+      <Flex gap="md" align="center" justify="space-between" px="md" style={{ minHeight: '60px' }}>
+        <Flex gap="md">
+          <DrawerComponent opened={opened} close={close} />
+          <Burger
+            opened={opened}
+            onClick={() => {
+              open();
+            }}
+            size="sm"
+            type="button"
+            title="Toggle Sidebar"
+            style={{ alignSelf: 'center' }}
+          />
+          <Title order={4}>Expenses Tracker</Title>
         </Flex>
-        <Divider />
-      </nav>
+        <Flex>
+          <DarkModeSwitch setColorScheme={setColorScheme} />
+        </Flex>
+      </Flex>
+      <Divider />
     </MantineProvider>
   );
 }
