@@ -1,22 +1,14 @@
 ---
 import BlogPost from '../../Layout/blog/BlogLayout.astro';
-const timestamp = new Date().toISOString();
-const post = {
-  title: 'Post Title',
-  description: 'Description for the post',
-  publishDate: timestamp,
-  createdAt: timestamp,
-  hero: 'favicon.svg',
-  author: 'John Doe',
-  content: `
+
+const content = `
 ## This is a markdown that would be rendered into the website as a blog
 Texts and images go here
 
 > Of course blockquotes ~~and what not!~~
-`,
-};
+`;
 ---
 
-<BlogPost frontmatter={post}>
-  {post.content}
+<BlogPost>
+  {content}
 </BlogPost>
