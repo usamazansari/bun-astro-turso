@@ -1,5 +1,5 @@
 {
-  "name": "expenses-tracker-astro",
+  "name": "bun-astro-turso",
   "type": "module",
   "version": "0.0.1",
   "scripts": {
@@ -48,3 +48,4 @@
     "typescript": "^5.0.0"
   }
 }
+

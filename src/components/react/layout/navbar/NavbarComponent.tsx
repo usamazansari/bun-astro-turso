@@ -39,7 +39,7 @@ export function NavbarComponent() {
             title="Toggle Sidebar"
             style={{ alignSelf: 'center' }}
           />
-          <Title order={4}>Expenses Tracker</Title>
+          <Title order={4}>Bun Astro Turso</Title>
         </Flex>
         <Flex>
           <DarkModeSwitch setColorScheme={setColorScheme} />
