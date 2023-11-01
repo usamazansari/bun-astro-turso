@@ -34,8 +34,16 @@ import Header from './Header.astro';
   </head>
 
   <body class="grid grid-rows-[auto_1fr_auto] min-h-screen text-sm bg-[#ffffff] dark:bg-color-header-bg">
-    <Header />
-    <slot />
-    <Footer />
+    <nav class="sticky top-0 left-0 right-0 bg-[#ffffff] dark:bg-color-header-bg">
+      <Header />
+    </nav>
+    <main class="flex justify-center">
+      <div class="container p-4">
+        <slot />
+      </div>
+    </main>
+    <footer>
+      <Footer />
+    </footer>
   </body>
 </html>

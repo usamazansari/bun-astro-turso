@@ -7,7 +7,5 @@ export const authToken = Bun.env.TURSO_DB_AUTH_TOKEN;
 ---
 
 <Layout>
-  <main>
-    <CardViewerComponent client:load url={dbUrl} authToken={authToken} />
-  </main>
+  <CardViewerComponent client:load url={dbUrl} authToken={authToken} />
 </Layout>
