@@ -16,8 +16,6 @@ export function CardViewerComponent({ url, authToken }: { url: string | undefine
           const { columns: usersColumns, rows: usersRows } = await client.execute('SELECT * FROM example_users');
           setUsers({ usersColumns, usersRows });
           const { columns: scoresColumns, rows: scoresRows } = await client.execute({
-            // sql: 'select * from example_scores where uid = ? and level = ?',
-            // args: ['uid1', 2],
             sql: 'select * from example_scores',
             args: [],
           });
